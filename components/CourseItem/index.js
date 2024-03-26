@@ -3,6 +3,8 @@
 import styled from 'styled-components'
 import Header from '../Header';
 import Text from '../Text';
+import Button from '../Button';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const Container = styled.div`
     border: 1px solid #DFE7F2;
@@ -52,8 +54,14 @@ const CourseItem = ({
     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
     timeslots=[{days: "Monday", startTime: "2:30 PM AST", endTime: "3:30 PM AST"}],
     credits="3",
-    showConflict=false
+    showConflict=false,
+    CRN="10101"
     }) => {
+
+        const router = useRouter();
+
+        const searchParam = useSearchParams('query');
+    
     return (
         <Container>
             <ColumnContainer>
@@ -63,6 +71,7 @@ const CourseItem = ({
                         <Credits>{credits} Credits</Credits>
                     </FlexContainer>
                     <Text size='16px' text={description}></Text>
+                    <Text size='16px' text={`CRN: ${CRN}`}></Text>
                 </Column>
                 <Column flex={"0.5"}>
                     {showConflict ?
@@ -93,6 +102,9 @@ const CourseItem = ({
                 })
             }
             </TimeslotsContainer>
+            {/* <div className='mt-7'>
+                <Button onClick={handleAddClassToSearch} text='Add Class to Search'></Button>
+            </div> */}
         </Container>
     )
 }
