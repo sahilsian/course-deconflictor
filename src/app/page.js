@@ -74,7 +74,7 @@ export default function Home() {
               description={item.description}
               timeslots={item.timeslots}
               showConflict={true}
-              CRN={item.crn}
+              CRN={item.crn || "None"}
               ></CourseItem>
             )
           })
@@ -87,7 +87,7 @@ export default function Home() {
               title={item.courseTitle}
               description={item.description}
               timeslots={item.timeslots}
-              CRN={item.crn}
+              CRN={item.crn || "None"}
               ></CourseItem>
             )
           })
