@@ -33,13 +33,16 @@ export default function Home() {
   const { data: courses } = useQuery({
     queryKey: ['courses'],
     queryFn: () => getRESTCourses(),
+    cacheTime: 0,
     refetchOnWindowFocus: 'always',
+    
   })
 
   const { data: coursesDeconflcited } = useQuery({
     queryKey: ['courses'],
     queryFn: () => getRESTCoursesDeconflicted(search),
     refetchOnWindowFocus: 'always',
+    cacheTime: 0,
     enabled: !!search
   })
 
