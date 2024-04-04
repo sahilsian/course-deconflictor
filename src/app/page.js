@@ -32,7 +32,7 @@ export default function Home() {
   const search = searchParams.get('query')
 
   const { data: courses } = useQuery({
-    queryKey: ['courses'],
+    queryKey: ['course'],
     queryFn: () => getRESTCourses(),
     cacheTime: 0,
     refetchOnWindowFocus: 'always',
@@ -40,7 +40,7 @@ export default function Home() {
   })
 
   const { data: coursesDeconflcited } = useQuery({
-    queryKey: ['courses'],
+    queryKey: ['coursesDeconflicted'],
     queryFn: () => getRESTCoursesDeconflicted(search),
     refetchOnWindowFocus: 'always',
     cacheTime: 0,
@@ -66,7 +66,7 @@ export default function Home() {
           {
           search?.length > 0 ?
           coursesDeconflcited && coursesDeconflcited?.map((item, key)=> {
-            return (
+              return (
               <CourseItem 
               key={key} 
               credits={item.credits} 
