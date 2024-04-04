@@ -10,6 +10,7 @@ import CourseItem from "../../components/CourseItem";
 import endpoints from "../../constants/endpoints";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from 'next/navigation'
+import { useEffect } from "react";
 
 async function getRESTCourses() {
   const response = await fetch("/api/courses");
@@ -45,6 +46,11 @@ export default function Home() {
     cacheTime: 0,
     enabled: !!search
   })
+
+  useEffect(()=> {
+    console.log("COURSES: ", courses);
+    console.log("COURSES DECONFLICTED: ", coursesDeconflcited);
+  }, [courses, coursesDeconflcited])
 
   return (
     <main className=" bg-[#F8F8FB] min-h-[100vh]">
